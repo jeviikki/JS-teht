@@ -3,7 +3,7 @@ function sortArray(array) {
     return sorted
 }
 
-let numbers = [42, 151, 404, 21, 0];
+let numbers = [42, 151, 404, 21, 0, -500, -21];
 
 sorted = sortArray(numbers);
 
