@@ -7,10 +7,9 @@ while (number != "done") {
     numbers.push(number);
 }
 
-for (i = 0; i<= numbers.length; i++) {
-    n = numbers[i];
-    if (n % 2 == 0) {
-        evens.push(n)
+for (let i of numbers) {
+    if (i % 2 == 0) {
+        evens.push(i);
     }
 }
 
