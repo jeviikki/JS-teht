@@ -13,4 +13,6 @@ for (let i of numbers) {
     }
 }
 
-document.getElementById("even-numbers").innerHTML = evens;
+if (evens.length != 0) {
+    document.getElementById("even-numbers").innerHTML = evens;
+}
