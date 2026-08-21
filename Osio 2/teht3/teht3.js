@@ -14,4 +14,4 @@ for (i = 0; i<= numbers.length; i++) {
     }
 }
 
-document.getElementsById("even-numbers").innerHTML = evens;
+document.getElementById("even-numbers").innerHTML = evens;
