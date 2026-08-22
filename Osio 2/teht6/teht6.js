@@ -32,13 +32,13 @@ const sortedMovies = sortMovies(movies);
 
 /* display on HTML */
 
-document.getElementById("favorite-movie-title").innerHTML = sortedMovies[0].title;
-document.getElementById("favorite-movie-rating").innerHTML = sortedMovies[0].rating;
+document.getElementById("favorite-movie-title").innerText = sortedMovies[0].title;
+document.getElementById("favorite-movie-rating").innerText = sortedMovies[0].rating;
 
 list = document.getElementById("movies-list");
 
 for (let item of sortedMovies) {
     const li = document.createElement("li");
-    li.innerHTML = "<b>" + item.title + "</b> " + item.rating + "</b> stars"
+    li.innerHTML = `<b>${item.title}</b> ${item.rating} stars`;
     list.appendChild(li);
 }

@@ -14,5 +14,5 @@ for (let i of numbers) {
 }
 
 if (evens.length != 0) {
-    document.getElementById("even-numbers").innerHTML = evens;
+    document.getElementById("even-numbers").innerText = evens;
 }
