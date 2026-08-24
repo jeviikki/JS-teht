@@ -46,8 +46,7 @@ for (const item of todoList) {
 	label.htmlFor = `todo-${item.id}`;
 	label.innerText = item.task;
 
-	li.appendChild(input);
-	li.appendChild(label);
+	li.append(input, label);
 
 	ul.appendChild(li);
 }
