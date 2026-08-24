@@ -771,3 +771,16 @@ const restaurants = [
 ];
 
 // your code here
+const defaultLat = 60.25
+const defaultLon = 24.84
+const map = L.map("map").setView([defaultLat, defaultLon], 11)
+
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+	maxZoom: 19,
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+for (place of restaurants) {
+	marker = L.marker([place.location.coordinates[1], place.location.coordinates[0]]).addTo(map);
+	marker.bindPopup(`<h3>${place.name}</h3><p>${place.address}</p>`).openPopup();
+}
