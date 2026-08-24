@@ -771,3 +771,32 @@ const restaurants = [
 ];
 
 // your code here
+function success(pos){
+	userLat = pos.coords.latitude;
+	userLon = pos.coords.longitude;
+
+	for (place of restaurants) {
+	placeLon = place.location.coordinates[0];
+	placeLat = place.location.coordinates[1];
+	place.distance = Math.sqrt((userLat-placeLat)**2 + (userLon-placeLon)**2);
+	}
+
+	restaurants.sort((a,b) => a.distance - b.distance);
+
+	target = document.getElementsByTagName("table")[0];
+
+	for (place of restaurants) {
+		tr = document.createElement("tr");
+		tr.innerHTML =
+			`<td>${place.name}</td>
+			<td>${place.address}</td>`;
+		target.append(tr);
+	}
+}
+function error(err){
+	console.warn(`Error ${err.code}: ${err.message}`)
+}
+navigator.geolocation.getCurrentPosition(
+	success,
+	error
+);
