@@ -41,6 +41,15 @@ for (const item of todoList) {
 	input.setAttribute("type", "checkbox");
 	input.setAttribute("id", item.id);
 
+	input.addEventListener("click", function(evt){
+		if (input.checked == true) {
+			item.completed = true;
+		} else {
+			item.completed = false;
+		}
+		console.log(todoList); // verification
+	})
+
 	if (item.completed == true) {
 		input.setAttribute("checked", "");
 	}
@@ -49,22 +58,17 @@ for (const item of todoList) {
 	label.htmlFor = item.id;
 	label.innerText = item.task;
 
-	li.append(input, label);
+	const btn = document.createElement("button");
+	btn.setAttribute("class", "delete-btn")
+	btn.innerText = "X";
+
+	btn.addEventListener("click", function(evt){
+		todoList.splice(todoList.indexOf(item), 1);
+		console.log(todoList);
+		ul.removeChild(li)
+	})
+
+	li.append(input, label, btn);
 
 	ul.appendChild(li);
-}
-
-// updates completion status
-
-const checkboxes = document.querySelectorAll(".checkbox");
-for (const checkbox of checkboxes) {
-	checkbox.addEventListener("click", function(evt){
-		const index = checkbox.id-1;
-		if (checkbox.checked == true) {
-			todoList[index].completed = true;
-		} else {
-			todoList[index].completed = false;
-		}
-		console.log(todoList); // verification
-	})
 }
