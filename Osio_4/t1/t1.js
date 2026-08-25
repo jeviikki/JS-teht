@@ -30,10 +30,8 @@ const todoList = [
 // add your code here
 
 // adds list items to the document
-const ul = document.getElementsByTagName("ul")[0];
-
-for (const item of todoList) {
-
+function addItem(item) {
+	const ul = document.getElementsByTagName("ul")[0];
 	const li = document.createElement("li");
 
 	const input = document.createElement("input");
@@ -58,17 +56,49 @@ for (const item of todoList) {
 	label.htmlFor = item.id;
 	label.innerText = item.task;
 
-	const btn = document.createElement("button");
-	btn.setAttribute("class", "delete-btn")
-	btn.innerText = "X";
+	const delBtn = document.createElement("button");
+	delBtn.setAttribute("class", "delete-btn")
+	delBtn.innerText = "X";
 
-	btn.addEventListener("click", function(evt){
+	delBtn.addEventListener("click", function(evt){
 		todoList.splice(todoList.indexOf(item), 1);
 		console.log(todoList);
 		ul.removeChild(li)
 	})
 
-	li.append(input, label, btn);
+	li.append(input, label, delBtn);
 
 	ul.appendChild(li);
 }
+
+for (const item of todoList) {
+	addItem(item);
+}
+
+// open modal window
+
+const addBtn = document.querySelector(".add-btn");
+const dialog = document.querySelector("dialog");
+addBtn.addEventListener("click", function(evt){
+	dialog.setAttribute("open","");
+})
+
+// modal window events
+const form = document.querySelector("form");
+const input = document.querySelector("form input");
+const submitBtn = document.querySelector("form button");
+let itemId = 6;
+
+form.addEventListener("submit", function(evt){
+	evt.preventDefault();
+	if (input.value != "") {
+		item = {id: itemId,
+			task: input.value,
+			completed: false}
+		addItem(item);
+		todoList.push(item);
+		console.log(todoList);
+		itemId += 1;
+	}
+	dialog.removeAttribute("open");
+})
