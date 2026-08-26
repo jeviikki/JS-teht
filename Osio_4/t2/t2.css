@@ -25,7 +25,13 @@ td {
   padding: 0.5em 1em;
 }
 
-.highlight{
+dialog {
+	position: fixed;
+	bottom: 40%;
+	left: 0;
+}
+
+.highlight {
 	background-color: orange;
 	font-weight: bold;
 }

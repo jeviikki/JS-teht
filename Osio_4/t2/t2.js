@@ -776,13 +776,24 @@ restaurants.sort((a,b) => a.name > b.name);
 
 target = document.getElementsByTagName("table")[0];
 
-for (place of restaurants) {
+for (const place of restaurants) {
 	const tr = document.createElement("tr");
 	tr.innerHTML = `<td>${place.name}</td><td>${place.address}</td>`;
 	tr.addEventListener("click", function(evt){
 		for (row of allRows) {
 			row.classList.remove("highlight");
 		}
+
+		const dialog = document.querySelector("dialog");
+		console.log(dialog);
+		dialog.setAttribute("open", "")
+		dialog.innerHTML = `
+			<h1>Restaurant info</h1>
+			<b>Restaurant name:</b> ${place.name}
+			<br><b>Address:</b> ${place.address}, ${place.city} ${place.postalCode}
+			<br><b>Phone number:</b> ${place.phone}
+			<br><b>Company:</b> ${place.company}</p>
+			`
 		tr.classList = "highlight";
 	})
 	target.append(tr);
