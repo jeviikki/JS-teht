@@ -777,9 +777,15 @@ restaurants.sort((a,b) => a.name > b.name);
 target = document.getElementsByTagName("table")[0];
 
 for (place of restaurants) {
-	tr = document.createElement("tr");
-	tr.innerHTML =
-		`<td>${place.name}</td>
-		<td>${place.address}</td>`;
+	const tr = document.createElement("tr");
+	tr.innerHTML = `<td>${place.name}</td><td>${place.address}</td>`;
+	tr.addEventListener("click", function(evt){
+		for (row of allRows) {
+			row.classList.remove("highlight");
+		}
+		tr.classList = "highlight";
+	})
 	target.append(tr);
 }
+
+const allRows = document.getElementsByTagName("tr");
