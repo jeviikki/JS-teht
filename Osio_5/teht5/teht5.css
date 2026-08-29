@@ -1,3 +1,7 @@
+:root{
+  --border: 1px solid #ccc;
+}
+
 body {
   background-color: #f0f0f0;
   font-family: sans-serif;
@@ -14,24 +18,31 @@ table {
 
 th {
   background-color: #f0f0f0;
-  border-bottom: 1px solid #ccc;
+  border-bottom: var(--border);
   font-weight: normal;
   padding: 0.5em 1em;
   text-align: left;
 }
 
 td {
-  border-bottom: 1px solid #ccc;
+  border-bottom: var(--border);
   padding: 0.5em 1em;
-}
-
-dialog {
-	position: fixed;
-  top: 0;
-  right: 0;
 }
 
 .highlight {
 	background-color: orange;
 	font-weight: bold;
+}
+
+dialog {
+	position: fixed;
+  top: 1em;
+  right: 0;
+  border: var(--border);
+}
+
+#close-btn{
+  border: var(--border);
+  background-color: red;
+  color: white
 }

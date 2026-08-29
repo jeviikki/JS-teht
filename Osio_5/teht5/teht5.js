@@ -33,7 +33,7 @@ async function getRestaurants() {
 					<br><b>Address:</b> ${place.address}, ${place.city} ${place.postalCode}
 					<br><b>Phone number:</b> ${place.phone}
 					<br><b>Company:</b> ${place.company}</p>
-					<h2>Menu today</h2>
+					<h2>Today's menu</h2>
 					<ul id="restaurant-menu"></ul>`
 				tr.classList = "highlight";
 
