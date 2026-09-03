@@ -18,7 +18,8 @@ const restaurantModal = (restaurant, menu) => {
 		for (const course of menu) {
 			let {name, price, diets} = course;
 			price = price || "? €";
-			menuHtml += `<li><b>${name}</b> (${diets}) ${price}</li>`;
+			diets = diets || " ";
+			menuHtml += `<li><b>${name}</b> ${diets} | ${price}</li>`;
 		}
 		menuHtml += "</ul>"
 	}

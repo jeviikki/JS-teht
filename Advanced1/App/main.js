@@ -55,7 +55,7 @@ async function getMenu(restaurant, url) {
 		dialog.setAttribute("open", "")
 		
 	} catch (err) {
-		console.log(err.message);;
+		console.log(err.message);
 	}
 }
 
