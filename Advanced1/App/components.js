@@ -7,19 +7,18 @@ const restaurantRow = (restaurant) => {
 
 const restaurantModal = (restaurant, menu) => {
 	const {name, address, postalCode, city, phone, company} = restaurant;
-	console.log(menu)
-
+	const courses = menu.courses;
 	let menuHtml
 
-	if (menu.length < 1) {
+	if (courses.length < 1) {
 		menuHtml = `Empty.`;
 	} else {
 		menuHtml = "<ul>";
-		for (const course of menu) {
+		for (const course of courses) {
 			let {name, price, diets} = course;
 			price = price || "? €";
 			diets = diets || " ";
-			menuHtml += `<li><b>${name}</b> ${diets} | ${price}</li>`;
+			menuHtml += `<li><b>${name}</b> ${diets}, ${price}</li>`;
 		}
 		menuHtml += "</ul>"
 	}
