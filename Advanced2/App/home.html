@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced JavaScript 2</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="components.js" defer ></script>
+  <script type="module" src="main.js" defer></script>
+</head>
+
+<body>
+  <h1>Restaurants</h1>
+
+  <form id="filter-form">
+    <label for="company">Show me restaurants for...</label>
+    <div class="checkbox-group">
+      <input type="checkbox" id="sodexo" name="company" value="sodexo" checked><label for="sodexo">Sodexo</label>
+      <input type="checkbox" id="compass" name="company" value="compass group" checked><label for="compass">Compass Group</label>
+    </div>
+    <input id="filter-btn" type="submit" value="Filter">
+  </form>
+
+  <table>
+    <tr class="tableheader">
+      <th><span class="table-icon"></span>Name</th>
+      <th><span class="table-icon"></span>Address</th>
+      <th><span class="table-icon"></span>Company</th>
+    </tr>
+    <!-- add restaurants here -->
+  </table>
+  <!-- modal -->
+  <dialog>
+    <!-- add restaurant info here when restaurant is clicked -->
+  </dialog>
+</body>
+
+</html>
