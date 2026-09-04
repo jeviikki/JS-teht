@@ -17,8 +17,30 @@ const restaurantModal = (restaurant, menu) => {
 		for (const course of courses) {
 			let {name, price, diets} = course;
 			price = price || "? €";
-			console.log(course);
-			menuHtml += `<li><b>${name}</b> ${diets.map((diet) => {
+			menuHtml += `<li><b>${name}</b> ${diets}, ${price}</li>`;
+		}
+		menuHtml += "</ul>"
+	}
+
+	const dialogHtml = `
+		<button id="close-btn">X</button>
+		<h2>Restaurant info</h2>
+		<span id="place-name"><b>Restaurant name:</b> ${name}</span>
+		<span id="place-address"><br><b>Address:</b> ${address}, ${postalCode} ${city}</span>
+		<span id="place-phone"><br><b>Phone number:</b> ${phone}</span>
+		<span id="place-company"><br><b>Company:</b> ${company}</p></span>
+		<h2>Today's menu</h2>
+		${menuHtml}`
+	return dialogHtml;
+}
+
+export{
+	restaurantModal,
+	restaurantRow
+}; 
+
+/*
+diets.map((diet) => {
 				switch (diet) {
 					//sydänmerkitty
 					case "*":
@@ -40,23 +62,5 @@ const restaurantModal = (restaurant, menu) => {
 						return "&#x1F927";
 					default:
 						return diet;
-				}})}, ${price}</li>`;
-		}
-		menuHtml += "</ul>"
-	}
-
-	const dialogHtml = `<h2>Restaurant info</h2>
-		<span id="place-name"><b>Restaurant name:</b> ${name}</span>
-		<span id="place-address"><br><b>Address:</b> ${address}, ${postalCode} ${city}</span>
-		<span id="place-phone"><br><b>Phone number:</b> ${phone}</span>
-		<span id="place-company"><br><b>Company:</b> ${company}</p></span>
-		<h2>Today's menu</h2>
-		${menuHtml}`
-
-	return dialogHtml;
-}
-
-export{
-	restaurantModal,
-	restaurantRow
-}; 
+				}})
+*/

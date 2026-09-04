@@ -60,6 +60,11 @@ async function renderRestaurants(restaurants){
 
 			dialog.innerHTML = restaurantModal(restaurant, menu)
 			dialog.setAttribute("open", "")
+
+			const closeBtn = document.querySelector("#close-btn");
+			closeBtn.addEventListener("click", (event) => {
+				dialog.close();
+			})
 		});
 	});
 };

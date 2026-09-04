@@ -44,5 +44,6 @@ dialog {
 #close-btn{
   border: var(--border);
   background-color: red;
-  color: white
+  color: white;
+  cursor: pointer;
 }
