@@ -17,7 +17,8 @@ const restaurantModal = (restaurant, menu) => {
 		for (const course of courses) {
 			let {name, price, diets} = course;
 			price = price || "? €";
-			menuHtml += `<li><b>${name}</b> ${diets}, ${price}</li>`;
+			diets = diets || "None";
+			menuHtml += `<li><b>${name}</b> (${diets}) ${price}</li>`;
 		}
 		menuHtml += "</ul>"
 	}
@@ -40,7 +41,8 @@ export{
 }; 
 
 /*
-diets.map((diet) => {
+to be impletemented later
+			diets.map((diet) => {
 				switch (diet) {
 					//sydänmerkitty
 					case "*":
