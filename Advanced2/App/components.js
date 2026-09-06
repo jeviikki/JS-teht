@@ -16,9 +16,49 @@ const restaurantModal = (restaurant, menu) => {
 		menuHtml = "<ul>";
 		for (const course of courses) {
 			let {name, price, diets} = course;
+			console.log(course);
 			price = price || "? €";
-			diets = diets || "None";
-			menuHtml += `<li><b>${name}</b> (${diets}) ${price}</li>`;
+			diets = diets || "No special diets listed";
+
+			// some arrays have no items
+			if (diets.length == 0) {
+				diets = "No special diets listed";
+			}
+
+			// sodexo lists diets as a string. this converts them to array
+			if (Array.isArray(diets) == false) {
+				diets = diets.split(", ");
+			}
+
+			menuHtml += `<li>
+			<b>${name}</b> 
+			(${diets.map((diet) => {
+			switch (diet) {
+				//sydänmerkitty
+				case "*":
+					return "&#x2764";
+				//ilmastoystävällinen
+				case "ILM":
+					return "&#x267B";
+				//gluteeniton
+				case "G":
+					return "&#x1F33E";
+				//laktoositon, vähälaktoosinen, maidoton
+				case "L": case "VL": case "M":
+					return "&#x1F42E";
+				//vegaani
+				case "Veg":
+					return "&#x1F331";
+				// sisältää allergeeneja
+				case "A":
+					return "&#x1F927";
+				// sisältää valkosipulia
+				case "VS":
+					return "&#x1F9C4";
+				default:
+					return diet;
+				}})})
+				${price}</li>`;
 		}
 		menuHtml += "</ul>"
 	}
@@ -42,6 +82,7 @@ export{
 
 /*
 to be impletemented later
+implement this so it can work if diets isnt an array
 			diets.map((diet) => {
 				switch (diet) {
 					//sydänmerkitty
