@@ -8,6 +8,7 @@ const restaurantRow = (restaurant) => {
 const restaurantModal = (restaurant, menu) => {
 	const {name, address, postalCode, city, phone, company} = restaurant;
 	const courses = menu.courses;
+	const noDiets = "No special diets listed"
 	let menuHtml
 
 	if (courses.length < 1) {
@@ -18,11 +19,11 @@ const restaurantModal = (restaurant, menu) => {
 			let {name, price, diets} = course;
 			console.log(course);
 			price = price || "? €";
-			diets = diets || "No special diets listed";
+			diets = diets || noDiets;
 
 			// some arrays have no items
 			if (diets.length == 0) {
-				diets = "No special diets listed";
+				diets = noDiets;
 			}
 
 			// sodexo lists diets as a string. this converts them to array
@@ -44,6 +45,7 @@ const restaurantModal = (restaurant, menu) => {
 				case "G":
 					return "&#x1F33E";
 				//laktoositon, vähälaktoosinen, maidoton
+				//should be given different icons to avoid having the same emoji multiple times in a diets listing
 				case "L": case "VL": case "M":
 					return "&#x1F42E";
 				//vegaani
